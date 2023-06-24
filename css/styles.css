@@ -1,0 +1,20 @@
+h1{
+    color: green;
+}
+
+body{
+    color: black;
+    /*
+    margin: 0;
+    padding: 0;
+    */
+}
+
+.box{
+    height: 100px;
+    width: 100%;
+    padding: 0px;
+    margin: 0px;
+    border: 10px solid green;
+    background-color: green;
+}
