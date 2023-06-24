@@ -20,8 +20,36 @@ console.log("hi");
 
 const food = await collection(db, 'food');
 const snapshot = await getDocs(food);
+
 snapshot.forEach((doc) => {
+    //creates new header element in html 
+    let h = document.createElement("HEADER");
+    document.body.appendChild(h);
+
+    //creates h2 element in html and adds text to it
+    let h2 = document.createElement("H2");
+    let txt = document.createTextNode(doc.data()['name']);
+    h2.appendChild(txt);
+    h.appendChild(h2);
+
+    //creates unordered list
+    var ul = document.createElement('ul');
+    document.body.appendChild(ul);
+
+    //appends list element to unordered list
+    var li = document.createElement('li');
+    li.appendChild(document.createTextNode('calories: ' + doc.data()['calories']));
+    ul.appendChild(li);
+
+    //printing stuff to console for debugging
+    let keys = Object.keys(doc.data());
     console.log(doc.id, '=>', doc.data());
+    for (let i = 0; i < keys.length; i++){
+        console.log(keys[i]);
+    }
+
+    //document.write(doc.data()['calories']);
+
 });
 
 /*
