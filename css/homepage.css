@@ -1,0 +1,47 @@
+html{
+    height: 100%;
+    width: 100%;
+}
+
+body{
+    background-image: url("../skip.jpg");
+    background-repeat: no-repeat;
+    background-size: 50% 100%;
+    /* background-size: cover;
+    background-position: left;
+
+    height: 100vh;
+    width: 50%;
+    display: flex;
+    align-items: center;     */
+}
+
+.text{
+    float: right;
+}
+
+#start{
+    float: right;
+    
+}
+
+/*
+body, html{
+    height: 100%;
+    margin: 0;
+    background-color: #95Db94;
+}
+*/
+
+/*
+.bg{
+    background-image: url("../skip.jpg");
+
+    height: 100%;
+    width: 50%;
+
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+*/
