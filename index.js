@@ -36,10 +36,33 @@ snapshot.forEach((doc) => {
     var ul = document.createElement('ul');
     document.body.appendChild(ul);
 
+    //create array of hardcoded keys to use in for loop
+    var values = ["calories", "protein", "carbs", "sugar", "price"];
+
+    //for loop that appends each key and value onto the unordered list
+    for (let i = 0; i < values.length; i++){
+      var li = document.createElement('li');
+      li.appendChild(document.createTextNode(values[i] + ': ' + doc.data()[values[i]]));
+      ul.appendChild(li);
+    }
+
+
     //appends list element to unordered list
+    
+    /*
     var li = document.createElement('li');
     li.appendChild(document.createTextNode('calories: ' + doc.data()['calories']));
     ul.appendChild(li);
+    var li2 = document.createElement('li');
+    li2.appendChild(document.createTextNode('protein: ' + doc.data()['protein']));
+    ul.appendChild(li2);
+    li.appendChild(document.createTextNode('carbs: ' + doc.data()['carbs']));
+    ul.appendChild(li);
+    li.appendChild(document.createTextNode('sugar: ' + doc.data()['sugar']));
+    ul.appendChild(li);
+    li.appendChild(document.createTextNode('price: ' + doc.data()['price']));
+    ul.appendChild(li);
+    */
 
     //printing stuff to console for debugging
     let keys = Object.keys(doc.data());
