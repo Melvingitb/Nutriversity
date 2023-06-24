@@ -4,6 +4,7 @@ h1{
 
 body{
     color: black;
+    background-color: #95Db94;
     /*
     margin: 0;
     padding: 0;
@@ -16,5 +17,14 @@ body{
     padding: 0px;
     margin: 0px;
     border: 10px solid green;
+    background-color: green;
+}
+
+#backcolor{
+    height: 50px;
+    width: 50px;
+    padding: 0px;
+    margin: 0px;
+    border: 0px solid green;
     background-color: green;
 }
