@@ -21,16 +21,29 @@ console.log("hi");
 const food = await collection(db, 'food');
 const snapshot = await getDocs(food);
 
+const datatable = document.querySelector('#datatable');
+
 snapshot.forEach((doc) => {
     //creates new header element in html 
     let h = document.createElement("HEADER");
     document.body.appendChild(h);
+    
+    //append to table
+    let r = document.createElement("tr");
+    datatable.appendChild(r);
+
+    //let td = document.createElement("td");
+    //let tex = document.createTextNode(doc.data())
 
     //creates h2 element in html and adds text to it
     let h2 = document.createElement("H2");
     let txt = document.createTextNode(doc.data()['name']);
     h2.appendChild(txt);
     h.appendChild(h2);
+
+    let tdname = document.createElement("td");
+    tdname.appendChild(document.createTextNode(doc.data()['name']));
+    r.appendChild(tdname);
 
     //creates unordered list
     var ul = document.createElement('ul');
@@ -42,6 +55,10 @@ snapshot.forEach((doc) => {
     //for loop that appends each key and value onto the unordered list
     for (let i = 0; i < values.length; i++){
       var li = document.createElement('li');
+      let td = document.createElement("td");
+      td.appendChild(document.createTextNode(doc.data()[values[i]]));
+      r.appendChild(td);
+
       li.appendChild(document.createTextNode(values[i] + ': ' + doc.data()[values[i]]));
       ul.appendChild(li);
     }
