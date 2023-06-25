@@ -1,5 +1,5 @@
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js';
-import { getFirestore, collection, getDocs, getDoc } from 'https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore.js';
+import { getFirestore, collection, getDocs, getDoc, doc, setDoc } from 'https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore.js';
 
 const firebaseConfig = {
     apiKey: "AIzaSyBuqhqpdBEQ6UuMLMjHhMDA52jlvRRDvWY",
@@ -95,13 +95,24 @@ snapshot.forEach((doc) => {
 
 });
 
+//document.getElementById("calories").value = 500;
+
 //function to be called when submit button is clicked
-function onSubmit(){
+async function onSubmit(){
+  let data = {name: document.getElementById("foodname").value, calories: document.getElementById("calories").value,
+              protein: document.getElementById("protein").value, carbs: document.getElementById("carbs").value, 
+            sugar: document.getElementById("sugar").value, price: document.getElementById("price").value};
+  
+  console.log(data["calories"]);
+
+  const newFood = doc(collection(db, 'food'));
+  await setDoc(newFood, data);
+  //const Foodref = await addDoc(collection(db, 'food'), data);
   console.log("submitted");
 }
 
 //sets the form to do the onSubmit function when the button is clicked
-document.getElementById("userinput").onsubmit = onSubmit;
+document.getElementById("sub").onclick = onSubmit;
 /*
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
