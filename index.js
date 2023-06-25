@@ -23,6 +23,8 @@ const snapshot = await getDocs(food);
 
 const datatable = document.querySelector('#datatable');
 
+//document.getElementById("calories").value = 500;
+
 snapshot.forEach((doc) => {
     //creates new header element in html 
     let h = document.createElement("HEADER");
@@ -41,6 +43,7 @@ snapshot.forEach((doc) => {
     h2.appendChild(txt);
     h.appendChild(h2);
 
+    //Add food name to table
     let tdname = document.createElement("td");
     tdname.appendChild(document.createTextNode(doc.data()['name']));
     r.appendChild(tdname);
@@ -52,7 +55,7 @@ snapshot.forEach((doc) => {
     //create array of hardcoded keys to use in for loop
     var values = ["calories", "protein", "carbs", "sugar", "price"];
 
-    //for loop that appends each key and value onto the unordered list
+    //for loop that appends each key and value onto the unordered list and table
     for (let i = 0; i < values.length; i++){
       var li = document.createElement('li');
       let td = document.createElement("td");
