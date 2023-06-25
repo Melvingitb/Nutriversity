@@ -1,30 +1,3 @@
-/* h1{
-    color: green;
-}
-
-body{
-    color: black;
-    background-color: #95Db94;
-}
-
-.box{
-    height: 100px;
-    width: 100%;
-    padding: 0px;
-    margin: 0px;
-    border: 10px solid green;
-    background-color: green;
-}
-
-#backcolor{
-    height: 50px;
-    width: 50px;
-    padding: 0px;
-    margin: 0px;
-    border: 0px solid green;
-    background-color: green;
-} */
-
 html{
     width: 100%;
     height: 100%;
@@ -35,7 +8,16 @@ body{
 }
 
 .banner{
+    position: relative;
     background-image: url("../veggie header.jpeg");
     background-repeat: no-repeat;
     height: 350px;
+}
+
+.header{
+    position: absolute;
+    color: green;
+    font-size: 100px;
+    left: 300px;
+    top: 100px;
 }
