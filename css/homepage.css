@@ -17,9 +17,17 @@ body{
     padding: 100px;
 }
 
-#start{
+.start{
     width: 120px;
     height: 40px;
     text-align: center;
     font-size: 30px;
+    border: 2px solid green;
+    background-color: white;
+    color: black;
+}
+
+.start:hover{
+    background-color: green;
+    color: white;
 }
