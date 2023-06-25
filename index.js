@@ -1,6 +1,8 @@
+// Import the functions you need from the SDKs you need
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js';
-import { getFirestore, collection, getDocs, getDoc, doc, setDoc } from 'https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore.js';
+import { getFirestore, collection, getDocs, getDoc, doc, setDoc, onSnapshot, query, where } from 'https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore.js';
 
+// Your web app's Firebase configuration
 const firebaseConfig = {
     apiKey: "AIzaSyBuqhqpdBEQ6UuMLMjHhMDA52jlvRRDvWY",
     authDomain: "nutriversity-37b51.firebaseapp.com",
@@ -11,6 +13,7 @@ const firebaseConfig = {
     measurementId: "G-22L18SLLGQ"
   };
 
+  // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
 console.log("hello");
@@ -22,8 +25,6 @@ const food = await collection(db, 'food');
 const snapshot = await getDocs(food);
 
 const datatable = document.querySelector('#datatable');
-
-//document.getElementById("calories").value = 500;
 
 snapshot.forEach((doc) => {
     //creates new header element in html 
@@ -66,24 +67,6 @@ snapshot.forEach((doc) => {
       ul.appendChild(li);
     }
 
-
-    //appends list element to unordered list
-    
-    /*
-    var li = document.createElement('li');
-    li.appendChild(document.createTextNode('calories: ' + doc.data()['calories']));
-    ul.appendChild(li);
-    var li2 = document.createElement('li');
-    li2.appendChild(document.createTextNode('protein: ' + doc.data()['protein']));
-    ul.appendChild(li2);
-    li.appendChild(document.createTextNode('carbs: ' + doc.data()['carbs']));
-    ul.appendChild(li);
-    li.appendChild(document.createTextNode('sugar: ' + doc.data()['sugar']));
-    ul.appendChild(li);
-    li.appendChild(document.createTextNode('price: ' + doc.data()['price']));
-    ul.appendChild(li);
-    */
-
     //printing stuff to console for debugging
     let keys = Object.keys(doc.data());
     console.log(doc.id, '=>', doc.data());
@@ -91,11 +74,8 @@ snapshot.forEach((doc) => {
         console.log(keys[i]);
     }
 
-    //document.write(doc.data()['calories']);
-
 });
 
-//document.getElementById("calories").value = 500;
 
 //function to be called when submit button is clicked
 async function onSubmit(){
@@ -107,36 +87,53 @@ async function onSubmit(){
 
   const newFood = doc(collection(db, 'food'));
   await setDoc(newFood, data);
-  //const Foodref = await addDoc(collection(db, 'food'), data);
+
   console.log("submitted");
 }
 
 //sets the form to do the onSubmit function when the button is clicked
 document.getElementById("sub").onclick = onSubmit;
+
+//renders a new doc into the table
+function renderDoc(doc){
+  const table = document.querySelector('#datatable');
+
+  let r = document.createElement("tr");
+  table.appendChild(r);
+
+  //add food name to table
+  let tdname = document.createElement("td");
+    tdname.appendChild(document.createTextNode(doc.data()['name']));
+    r.appendChild(tdname);
+
+  //create array of hardcoded keys to use in for loop
+  var values = ["calories", "protein", "carbs", "sugar", "price"];
+
+  //for loop that appends each key and value onto the table
+  for (let i = 0; i < values.length; i++){
+    let td = document.createElement("td");
+    td.appendChild(document.createTextNode(doc.data()[values[i]]));
+    r.appendChild(td);
+  }
+}
+
+//real time listener
+const querySnapshot = await getDocs(collection(db, 'food'));
+querySnapshot.forEach((doc) => {
+  let changes = querySnapshot.docChanges();
+  changes.forEach(change => {
+    if (change.type == 'added'){
+      //renderDoc(change.doc);
+    }
+  })
+})
 /*
-// Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-import { getFirestore, collection, getDocs, getDoc } from "firebase/firestore";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const firebaseConfig = {
-  apiKey: "AIzaSyBuqhqpdBEQ6UuMLMjHhMDA52jlvRRDvWY",
-  authDomain: "nutriversity-37b51.firebaseapp.com",
-  projectId: "nutriversity-37b51",
-  storageBucket: "nutriversity-37b51.appspot.com",
-  messagingSenderId: "471285232650",
-  appId: "1:471285232650:web:3b42cc24a8f6caee3a9bf3",
-  measurementId: "G-22L18SLLGQ"
-};
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
-const db = getFirestore(app);
-const todosCol = collection(db, 'todos');
-const snapshot = await getDocs(todosCol);
+await getDocs(food)(snapshot => {
+  let changes = snapshot.docChanges();
+  changes.forEach(change => {
+    if (change.type == 'added'){
+      renderDoc(change.doc);
+    }
+  })
+})
 */
