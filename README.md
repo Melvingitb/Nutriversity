@@ -17,3 +17,10 @@ https://www.figma.com/file/svVPO5D4BblaIBvPXzn38K/Nutriversity?type=design&node-
 - Firebase
 - Firestore
 - Visual Studio Code
+
+## Website Images:
+### Home Page
+![github.com/Melvingitb/Nutriversity/main/home page.png](https://github.com/Melvingitb/Nutriversity/blob/main/home%20page.png)
+
+### Main Page
+![github.com/Melvingitb/Nutriversity/main/main page.png](https://github.com/Melvingitb/Nutriversity/blob/main/main%20page.png)
