@@ -4,7 +4,7 @@ html{
 }
 
 body{
-    background-image: url("../skip.jpg");
+    background-image: url("../cartoon veggies.jpeg");
     background-repeat: no-repeat;
     background-size: 50% 100%;
     background-color: #95Db94;
@@ -23,26 +23,3 @@ body{
     text-align: center;
     font-size: 30px;
 }
-
-
-
-/*
-body, html{
-    height: 100%;
-    margin: 0;
-    background-color: #95Db94;
-}
-*/
-
-/*
-.bg{
-    background-image: url("../skip.jpg");
-
-    height: 100%;
-    width: 50%;
-
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-*/
