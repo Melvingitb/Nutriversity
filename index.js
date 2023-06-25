@@ -22,10 +22,10 @@ const db = getFirestore(app);
 console.log("hi");
 
 const food = await collection(db, 'food');
-const snapshot = await getDocs(food);
+//const snapshot = await getDocs(food);
 
 const datatable = document.querySelector('#datatable');
-
+/*
 snapshot.forEach((doc) => {
     //creates new header element in html 
     let h = document.createElement("HEADER");
@@ -75,7 +75,7 @@ snapshot.forEach((doc) => {
     }
 
 });
-
+*/
 
 //function to be called when submit button is clicked
 async function onSubmit(){
@@ -88,6 +88,7 @@ async function onSubmit(){
   const newFood = doc(collection(db, 'food'));
   await setDoc(newFood, data);
 
+  renderData(data);
   console.log("submitted");
 }
 
@@ -117,16 +118,41 @@ function renderDoc(doc){
   }
 }
 
+//renders a new data into the table
+function renderData(data){
+  const table = document.querySelector('#datatable');
+
+  let r = document.createElement("tr");
+  table.appendChild(r);
+
+  //add food name to table
+  let tdname = document.createElement("td");
+    tdname.appendChild(document.createTextNode(data['name']));
+    r.appendChild(tdname);
+
+  //create array of hardcoded keys to use in for loop
+  var values = ["calories", "protein", "carbs", "sugar", "price"];
+
+  //for loop that appends each key and value onto the table
+  for (let i = 0; i < values.length; i++){
+    let td = document.createElement("td");
+    td.appendChild(document.createTextNode(data[values[i]]));
+    r.appendChild(td);
+  }
+}
+
 //real time listener
 const querySnapshot = await getDocs(collection(db, 'food'));
-querySnapshot.forEach((doc) => {
+//querySnapshot.forEach((doc) => {
   let changes = querySnapshot.docChanges();
+  console.log(changes);
   changes.forEach(change => {
     if (change.type == 'added'){
-      //renderDoc(change.doc);
+      renderDoc(change.doc);
     }
   })
-})
+//})
+
 /*
 await getDocs(food)(snapshot => {
   let changes = snapshot.docChanges();
