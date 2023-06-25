@@ -6,6 +6,7 @@ Welcome to Nutriversity, a website for college students to make smarter and heal
 - Backend: Melvin Gitbumrungsin
 
 ## Link to YouTube Video:
+https://youtu.be/VXGH4tzbrL0
 
 ## Link to Figma Design: 
 https://www.figma.com/file/svVPO5D4BblaIBvPXzn38K/Nutriversity?type=design&node-id=0%3A1&mode=design&t=QdBRuw0GGhoT5AyL-1 
