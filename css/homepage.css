@@ -4,20 +4,24 @@ html{
 }
 
 body{
-    /* background-image: url("../skip.jpg");
+    background-image: url("../skip.jpg");
     background-repeat: no-repeat;
-    background-size: 50% 100%; */
+    background-size: 50% 100%;
     background-color: #95Db94;
 }
 
 .text{
     text-align: center;
     float: right;
+    width: 500px;
+    padding: 100px;
 }
 
 #start{
-    width: 100px;
-    height: 30px;
+    width: 120px;
+    height: 40px;
+    text-align: center;
+    font-size: 30px;
 }
 
 
