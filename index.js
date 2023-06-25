@@ -95,9 +95,13 @@ snapshot.forEach((doc) => {
 
 });
 
+//function to be called when submit button is clicked
 function onSubmit(){
   console.log("submitted");
 }
+
+//sets the form to do the onSubmit function when the button is clicked
+document.getElementById("userinput").onsubmit = onSubmit;
 /*
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
