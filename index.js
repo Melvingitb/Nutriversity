@@ -90,6 +90,12 @@ async function onSubmit(){
 
   renderData(data);
   console.log("submitted");
+  document.getElementById("foodname").value = "";
+  document.getElementById("calories").value = "";
+  document.getElementById("protein").value = "";
+  document.getElementById("carbs").value = "";
+  document.getElementById("sugar").value = "";
+  document.getElementById("price").value = "";
 }
 
 //sets the form to do the onSubmit function when the button is clicked
